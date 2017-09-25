@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <% if (htmlWebpackPlugin.options.files.css) { %>
+    <% htmlWebpackPlugin.options.files.css.forEach(function(name){ %>
+      <link rel="stylesheet" type="text/css" href="<%= name %>">
+    <% }) %>
+  <% } %>
+</head>
+<body>
+  <div id="container" class="animated fadeIn">
+    <box>
+      <box-filter params="title:'草稿箱', q: $root.q, placeholder:'请输入关键字搜索', query: $root.query">
+        <div class="pull-left">
+          <button class="btn btn-primary btn-sm  m-r-sm" data-bind="click: $root.submit"><span class="fa fa-send"></span>&nbsp;提交</button>
+          <button class="btn btn-danger btn-sm" data-bind="click: $root.deleteCt"><span class="fa fa-trash"></span>&nbsp;删除</button>
+        </div>
+      </box-filter>
+      <box-content>
+        <u-grid params="config: $root.gridconfig"></u-grid>
+      </box-content>
+    </box>
+  </div>
+
+  <% if (htmlWebpackPlugin.options.files.js) { %>
+    <% htmlWebpackPlugin.options.files.js.forEach(function(name){ %>
+      <script type="text/javascript" src="<%= name %>"></script>
+    <% }) %>
+  <% } %>
+</body>
+</html>
